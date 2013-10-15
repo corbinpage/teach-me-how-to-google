@@ -1,0 +1,15 @@
+
+API Key
+AIzaSyDpSb1Dliyw4Z8GgQbfyEbtW_q_HLilqKE
+
+Search Engine ID
+004839866588995572534:k4mrucdwo6c
+
+
+
+Interesting Learnings:
+	Custom Search the entire web - 
+		http://stackoverflow.com/questions/6099663/alternative-to-the-deprecated-google-rest-web-search-api
+		
+		
+		GET https://www.googleapis.com/customsearch/v1?key=AIzaSyDpSb1Dliyw4Z8GgQbfyEbtW_q_HLilqKE&cx=004839866588995572534:k4mrucdwo6c&num=100&q=lectures

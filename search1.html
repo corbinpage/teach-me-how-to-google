@@ -22,6 +22,9 @@
       // tell the searcher to draw itself and tell it where to attach
       searchControl.draw(document.getElementById("searchcontrol"));
 
+	  //Set search result size
+	  searchControl.setResultSetSize(google.search.Search.LARGE_RESULTSET)
+	  
       // execute an inital search
       searchControl.execute(searchTxt);
     }
