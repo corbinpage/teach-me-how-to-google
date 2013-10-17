@@ -26,7 +26,13 @@
 	  searchControl.setResultSetSize(google.search.Search.LARGE_RESULTSET)
 	  
       // execute an inital search
-      searchControl.execute(searchTxt);
+      document.write("<br><br><br><br>" + searchControl.execute(searchTxt));
+	  
+	  
+	  
+	  //Returned is no results ->google.search.SearchControl.NO_RESULTS_DEFAULT_STRING
+	  
+	  
     }
     //google.setOnLoadCallback(OnLoad);
 

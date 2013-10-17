@@ -1,4 +1,11 @@
 
+Need to figure out the high level architecture:
+1)All client Side - Use caching to maintain status for an IP. Would need to parse the google html result somehow.
+
+2)Add serverside - Make the restful api call from the server. Also storing status in a DB.
+
+
+
 API Key
 AIzaSyDpSb1Dliyw4Z8GgQbfyEbtW_q_HLilqKE
 
@@ -8,8 +15,15 @@ Search Engine ID
 
 
 Interesting Learnings:
-	Custom Search the entire web - 
+1)	Custom Search the entire web - 
 		http://stackoverflow.com/questions/6099663/alternative-to-the-deprecated-google-rest-web-search-api
 		
 		
-		GET https://www.googleapis.com/customsearch/v1?key=AIzaSyDpSb1Dliyw4Z8GgQbfyEbtW_q_HLilqKE&cx=004839866588995572534:k4mrucdwo6c&num=100&q=lectures
+2)
+	Web browsers only allow a page to issue AJAX queries to the domain from which the page originated. This prevents cross-site scripting, a nasty attack method.
+
+If you control the domain, AJAX is very useful.
+
+If you don't control the domain, you should setup a server which requests the data and serves it (either on page load, or through AJAX) to the desired subpage.
+
+3) Javascript can't be included in Footer
