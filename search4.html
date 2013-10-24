@@ -17,19 +17,7 @@
     }
 
      function search(searchTerm) {	
-		var xhr = new XMLHttpRequest();
-		src = "asd"
-		document.write("Hello World" + src);
-    
-	
-	var xhr = new XMLHttpRequest();
-	xhr.onreadystatechange = function () {
-	  if (this.status == 200 && this.readyState == 4) {
-		console.log('response: ' + this.responseText);
-		alert("Yes");
 
-	  }
-	};
 	xhr.open('GET', "https://www.googleapis.com/customsearch/v1?key=AIzaSyDpSb1Dliyw4Z8GgQbfyEbtW_q_HLilqKE&amp;cx=004839866588995572534:k4mrucdwo6c&amp;fields=items(htmlTitle,link,formattedUrl)&amp;q="+searchTerm+"&amp");
 	xhr.send();
 	}
