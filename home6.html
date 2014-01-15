@@ -17,11 +17,14 @@
 	<!-- Attach our CSS -->
     <link rel="stylesheet" type="text/css" href="joyride-master/joyride-2.1.css">
     <script type="text/javascript" src="joyride-master/jquery-1.10.1.js"></script>
-    <script type="text/javascript" src="joyride-master/jquery.cookie.js"></script>
-    <script type="text/javascript" src="joyride-master/modernizr.mq.js"></script>
     <script type="text/javascript" src="joyride-master/jquery.joyride-2.1.js"></script>
 
 <!--
+    <script type="text/javascript" src="joyride-master/jquery.cookie.js"></script>
+    <script type="text/javascript" src="joyride-master/modernizr.mq.js"></script>
+	
+	
+
 <script language="Javascript" type="text/javascript">
     google.load('search', '1');
     function search(str) {
@@ -38,9 +41,9 @@
 </script>
 -->
 </head>
-<body class="hp vasq" id="gsr">
+<body>
 	<div class="content" id="main">
-	<span class="ctr-p" id="body" data-jiis="bp">
+	<span>
 		<center>
 		<div id="lga" style="height:231px;margin-top:20px">
 		<img alt="Google" height="95" src="googleIcon.png" width="269" id="hplogo" style="padding-top:112px">
@@ -51,7 +54,7 @@
 	<form class="gb_hb" action="/search" onsubmit="" target="" id="gbqf" name="gbqf" method="get">
 	<input id="gbqfq" class="gbqfif" name="q" type="text" value="">
 	<div class="jsb" id="gbqfbwa">
-		<button class="gbqfba" aria-label="Google Search" onclick="search(document.getElementById('gbqfq').value)" id="gbqfba" name="btnK">
+		<button class="gbqfba" aria-label="Google Search" onclick="search(document.getElementById('gbqfq').value)" id="gbqfbab" name="btnK">
 			<span id="gbqfsa">Google Search
 			</span> 
 		</button>
@@ -64,33 +67,26 @@
 	</center>
 	</div>
 
-	<ol id="joyrideList" style="visibility:hidden">
-	  <li data-id="gbqfba" data-text="Got it!" data-options="tipLocation:left">
-        <h2>Step #1</h2>
-        <p>Type in a query that will return this result: wikipedia.com</p>
-      </li>
-	  
-	  <li data-id="gbqfbwa" data-text="Got it!" data-options="tipLocation:left">
-        <h2>Step #1</h2>
-        <p>Type in a query that will return this result: wikipedia.com</p>
-      </li>
-	  
-	  
-	  <li data-id="gbqfbb" data-text="Got it!">
-        <h2>Step #2</h2>
+	<ol id="joyrideList1" style="visibility:hidden">
+	  <li data-id="gbqfbab" data-text="Got it!" data-options="tipLocation:left">
+        <h2>Let's get Started</h2>
         <p>Type in a query that will return this result: wikipedia.com</p>
       </li>
     </ol>
 	
+	<ol id="joyrideList2" style="visibility:hidden">
+	  <li data-id="gbqfbab" data-text="Got it!" data-options="tipLocation:left">
+        <h2>Nice!</h2>
+        <p>Now try to get this result: appleit.com</p>
+      </li>
+    </ol>
 	
 
 	<script>
 	$(window).load(function() {
-	  $("#joyrideList").joyride({
-		   tipLocation: 'bottom',  
+	  $("#joyrideList1").joyride({
 		   autoStart : true,
 		   modal:true,
-
 	  });
 	});
 	</script>
