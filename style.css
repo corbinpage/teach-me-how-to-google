@@ -1,0 +1,39 @@
+/* Teach me How to Google...with  Style...*/
+
+/*selector {
+	property: value;
+}
+*/
+
+input {
+	font-size: 14px;
+}
+
+#searchText {
+	width: 400px;
+}
+
+footer {
+   position:fixed;
+   left:0px;
+   bottom:0px;
+   height:26px;
+   width:100%;
+   background:#f2f2f2;
+   color:#777;   
+}
+
+footer a {
+	color:#777;
+	text-decoration:none;
+}
+
+#fLabel {
+	font-size: 14px;
+	font-weight: 100;
+	font-family: Georgia, "Times New Roman", serif;
+	bottom:-5px;
+	position:relative
+}
+
+
