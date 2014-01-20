@@ -17,14 +17,11 @@
 	<!-- Attach our CSS -->
     <link rel="stylesheet" type="text/css" href="joyride-master/joyride-2.1.css">
     <script type="text/javascript" src="joyride-master/jquery-1.10.1.js"></script>
+    <script type="text/javascript" src="joyride-master/jquery.cookie.js"></script>
+    <script type="text/javascript" src="joyride-master/modernizr.mq.js"></script>
     <script type="text/javascript" src="joyride-master/jquery.joyride-2.1.js"></script>
 
 <!--
-    <script type="text/javascript" src="joyride-master/jquery.cookie.js"></script>
-    <script type="text/javascript" src="joyride-master/modernizr.mq.js"></script>
-	
-	
-
 <script language="Javascript" type="text/javascript">
     google.load('search', '1');
     function search(str) {
@@ -42,13 +39,12 @@
 -->
 </head>
 <body>
-<<<<<<< HEAD:home8.html
 	<center>
 	<br>
 	<br>
 	<br>
 	<br>
-	<img src=images/icon.png height="95px" width="269px">
+	<img src=images/icon.png height="95px" width=269px">
 	<br>
 	<br>
 	<br>
@@ -56,57 +52,37 @@
 		<form action="search" method="post">
 				<input type="text" id="searchText" placeholder="Give it a try">
 				<br>
-				<input type="submit" class="buttonLabel" value="TMHTGoogle Search">
-				<input type="submit" class="buttonLabel" value="I'm Feeling Lucky">
+				<input type="submit" value="TMHTGoogle Search">
+				<input type="submit" value="I'm Feeling Lucky">
 		</form>
 	</center>	
-=======
-	<div class="content" id="main">
-	<span>
-		<center>
-		<div id="lga" style="height:231px;margin-top:20px">
-		<img alt="Google" height="95" src="googleIcon.png" width="269" id="hplogo" style="padding-top:112px">
-		</div>
-		</center>
-	</span>
-	<center>
-	<form class="gb_hb" action="/search" onsubmit="" target="" id="gbqf" name="gbqf" method="get">
-	<input id="gbqfq" class="gbqfif" name="q" type="text" value="">
-	<div class="jsb" id="gbqfbwa">
-		<button class="gbqfba" aria-label="Google Search" onclick="search(document.getElementById('gbqfq').value)" id="gbqfbab" name="btnK">
-			<span id="gbqfsa">Google Search
-			</span> 
-		</button>
-		<button class="gbqfba" aria-label="I'm Feeling Lucky" id="gbqfbb" name="btnI">
-			<span id="gbqfsb">I'm Feeling Lucky
-			</span>
-		</button>
-	</div>
-	</form>
-	</center>
-	</div>
->>>>>>> b0ecdea0fd471e7465fceedbda3c5315d813dac3:home6.html
-
-	<ol id="joyrideList1" style="visibility:hidden">
-	  <li data-id="gbqfbab" data-text="Got it!" data-options="tipLocation:left">
-        <h2>Let's get Started</h2>
+	<ol id="joyrideList" style="visibility:hidden">
+	  <li data-id="gbqfba" data-text="Got it!" data-options="tipLocation:left">
+        <h2>Step #1</h2>
+        <p>Type in a query that will return this result: wikipedia.com</p>
+      </li>
+	  
+	  <li data-id="gbqfbwa" data-text="Got it!" data-options="tipLocation:left">
+        <h2>Step #1</h2>
+        <p>Type in a query that will return this result: wikipedia.com</p>
+      </li>
+	  
+	  
+	  <li data-id="gbqfbb" data-text="Got it!">
+        <h2>Step #2</h2>
         <p>Type in a query that will return this result: wikipedia.com</p>
       </li>
     </ol>
 	
-	<ol id="joyrideList2" style="visibility:hidden">
-	  <li data-id="gbqfbab" data-text="Got it!" data-options="tipLocation:left">
-        <h2>Nice!</h2>
-        <p>Now try to get this result: appleit.com</p>
-      </li>
-    </ol>
 	
 
 <!--	<script>
 	$(window).load(function() {
-	  $("#joyrideList1").joyride({
+	  $("#joyrideList").joyride({
+		   tipLocation: 'bottom',  
 		   autoStart : true,
 		   modal:true,
+
 	  });
 	});
 	</script> 
