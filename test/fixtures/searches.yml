@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  step: MyString
+  search_num: 1
+  search_text: MyText
+  status: MyString
+  session_id: 
+
+two:
+  step: MyString
+  search_num: 1
+  search_text: MyText
+  status: MyString
+  session_id: 

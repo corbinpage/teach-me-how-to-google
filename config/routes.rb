@@ -1,10 +1,11 @@
 TeachMeHowToGoogle::Application.routes.draw do
   resources :search
+  resources :session
 
-  get 'search/go'
-  post 'search/go'
+#  post 'search/go'
+  get 'search/add'
 
-  root :to => redirect('search')
+  root :to => redirect('session/new')
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
