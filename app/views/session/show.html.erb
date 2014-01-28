@@ -1,5 +1,4 @@
 <center>
-<h1>SHOW Session!</h1>
 <br>
 <br>
 <br>
@@ -11,10 +10,9 @@
 <%= form_tag({controller: "search", action:"add"}, method:"post") do %>
     <%= text_field_tag('searchText', nil, placeholder: 'Give it a try') %>
     <br>
-	<%= submit_tag(@session[:id]) %>
+	<%= submit_tag("TMHTGoogle Search") %>
 	<%= submit_tag("I'm Feeling Lucky") %>
 	<%= hidden_field_tag :id, @session[:id]%>
 <% end %>
-
 
 </center>
