@@ -3,6 +3,7 @@ class SessionController < ApplicationController
 	end
 
 	def show
+		@session = Session.find(params[:id])
 	end
 
 end
