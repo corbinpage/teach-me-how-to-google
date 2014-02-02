@@ -3,16 +3,33 @@
 <br>
 <br>
 <br>
-<%= image_tag("icon.png",:alt => "Icon", height: '95', width: '269')%>
+<%= image_tag("icon.png",:alt => "Icon", height: '120', width: '269')%>
 <br>
 <br>
-<br>
-<%= form_tag({controller: "search", action:"add"}, method:"post") do %>
-    <%= text_field_tag('searchText', nil, placeholder: 'Give it a try') %>
+<%= form_tag({controller: "session", action:"add"}, method:"post") do %>
+    <%= text_field_tag('searchText', nil, placeholder: @search[:search_text]) %>
     <br>
-	<%= submit_tag("TMHTGoogle Search") %>
+	<%= submit_tag("TMHT Google Search") %>
 	<%= submit_tag("I'm Feeling Lucky") %>
 	<%= hidden_field_tag :id, @session[:id]%>
 <% end %>
-
+<br>
+<br>
+<% if @result[:item_titles].any? %>
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Link</th>
+    <th>Snippet</th>
+  </tr>
+ 
+<% @result[:item_titles].length.times do |i| %>
+  <tr>
+    <td><%= @result[:item_titles][i] %></td>
+    <td><%= link_to @result[:item_links][i], @result[:item_display_links][i] %></td>
+    <td><%= @result[:item_snippets][i] %></td>
+  </tr>
+<% end %>
+</table>
+<% end %>
 </center>

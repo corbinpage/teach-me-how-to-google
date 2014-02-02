@@ -3,7 +3,7 @@ TeachMeHowToGoogle::Application.routes.draw do
   resources :session
 
 #  post 'search/go'
-  post 'search/add'
+  post 'session/add'
 
   root :to => redirect('session/new')
 
