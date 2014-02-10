@@ -1,28 +1,23 @@
 
 /* Teach me How to Google...with  Style...*/
 
-/*selector {
-	property: value;
-}
-*/
-
-input {
-	font-size: 14px;
+div {
+  /*border: 1px solid green ;*/
+  font-family: arial,sans-serif;
 }
 
-/* Pseudo Selector
 input {
-	font-size: 28px;
-} /*
+  font-size: 14px;
+}
 
 /* ID Selector */
 #searchText {
-	width: 400px;
+  width: 400px;
 }
 
 /* Class Selector */
 .buttonLabel {
-	font-size: 40px;
+  font-size: 40px;
 }
 
 footer {
@@ -37,77 +32,81 @@ footer {
 
 /* Descendent Selector */
 footer a {
-	color:#777;
-	text-decoration:none;
+  color:#777;
+  text-decoration:none;
 }
 
 #fLabel {
-	font-size: 14px;
-	font-weight: 100;
-	font-family: Georgia, "Times New Roman", serif;
-	bottom:-5px;
-	position:relative
-}
-
-
-=======
-/* Teach me How to Google...with  Style...*/
-
-/*selector {
-	property: value;
-}
-*/
-
-input {
-	font-size: 14px;
-}
-
-#searchText {
-	width: 400px;
-}
-
-footer {
-   position:fixed;
-   left:0px;
-   bottom:0px;
-   height:26px;
-   width:100%;
-   background:#f2f2f2;
-   color:#777;   
-}
-
-footer a {
-	color:#777;
-	text-decoration:none;
-}
-
-#fLabel {
-	font-size: 14px;
-	font-weight: 100;
-	font-family: Georgia, "Times New Roman", serif;
-	bottom:-5px;
-	position:relative
+  font-size: 14px;
+  font-weight: 100;
+  font-family: Georgia, "Times New Roman", serif;
+  bottom:-5px;
+  position:relative
 }
 
 table {
-	font-family: verdana,arial,sans-serif;
-	font-size:11px;
-	color:#333333;
-	border-width: 1px;
-	border-color: #666666;
-	border-collapse: collapse;
+  font-family: verdana,arial,sans-serif;
+  font-size:11px;
+  color:#333333;
+  border-width: 1px;
+  border-color: #666666;
+  border-collapse: collapse;
 }
 table th {
-	border-width: 1px;
-	padding: 8px;
-	border-style: solid;
-	border-color: #666666;
-	background-color: #dedede;
+  border-width: 1px;
+  padding: 8px;
+  border-style: solid;
+  border-color: #666666;
+  background-color: #dedede;
 }
 table td {
-	border-width: 1px;
-	padding: 8px;
-	border-style: solid;
-	border-color: #666666;
-	background-color: #ffffff;
+  border-width: 1px;
+  padding: 8px;
+  border-style: solid;
+  border-color: #666666;
+  background-color: #ffffff;
+}
+
+#show_container
+{
+  position:fix;
+  width:810px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#show_left
+{
+  display:inline-block;
+  width:400px;
+  float:left;
+  height:330px;
+}
+
+#show_messages
+{
+  width: 80%;
+  height: 80%;
+  margin-left: auto;
+  margin-top: 25px;
+  margin-bottom: 1px;
+  margin-right: 30px;
+  /*box-shadow: -2px -2px 5px;*/
+  border-radius:10px;
+  background-color: #9BC9FF;
+}
+
+#show_right
+{
+  /*display:inline;*/
+  width:400px;
+  height:330px;
+  float:right;
+  /*margin-left: -400px;*/
+}
+
+#show_table
+{
+  width:100%;
+  float:left;
 }

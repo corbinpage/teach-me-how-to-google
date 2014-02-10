@@ -1,7 +1,12 @@
+<div id="show_container">
+<div id="show_left">
+<div id="show_messages">
+<%= @step_hash[:text] %>
+</div>
+</div>
+<div id="show_right">
+<div>
 <center>
-<br>
-<br>
-<br>
 <br>
 <%= image_tag("icon.png",:alt => "Icon", height: '208', width: '400')%>
 <br>
@@ -13,7 +18,10 @@
 	<%= submit_tag("I'm Feeling Lucky") %>
 	<%= hidden_field_tag :id, @session[:id]%>
 <% end %>
-<br>
+</center>
+</div>
+</div>
+<div id="show_table">
 <br>
 <% if @result[:item_titles].any? %>
 <table>
@@ -22,7 +30,6 @@
     <th>Link</th>
     <th>Snippet</th>
   </tr>
- 
 <% @result[:item_titles].length.times do |i| %>
   <tr>
     <td><%= @result[:item_titles][i] %></td>
@@ -32,4 +39,5 @@
 <% end %>
 </table>
 <% end %>
-</center>
+</div>
+</div>

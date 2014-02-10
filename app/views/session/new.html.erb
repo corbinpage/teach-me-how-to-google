@@ -7,7 +7,7 @@
 <br>
 <br>
 <%= form_tag({controller: "session", action:"create"}, method: "post") do %>
-    <%= text_field_tag('searchText', nil, placeholder: 'Give it a try') %>
+    <%= text_field_tag('searchText', nil, placeholder: 'Give it a try', value: 'jaguar') %>
     <br>
 	<%= submit_tag("TMHT Google Search") %>
 	<%= submit_tag("I'm Feeling Lucky") %>

@@ -1,0 +1,37 @@
+---
+steps:
+  jaguar:
+
+    text_1: jaguar
+    instructions_1: > 
+        Let's start! Try searching for "jaguar"
+    warn_1: > 
+        Doesn't look like you're searching for "jaguar"
+    text_2: jaguar -car
+    instructions_2: > 
+        Do you see results? Like for jaguar the car. Try using a dash or minus ("-") to REMOVE ANY REFERENCES to the car. Try searching "jaguar -car"
+    warn_2: > 
+        Doesn't look like you're excluding cars. Try "jaguar -car".
+    text_3: 'jaguar speed' -car
+    instructions_3: > 
+        Cool huh? Now we don't have any references to jaguar the car. But we're still trying to figure out the jaguar's top speed, so try searching  for  "jaguar speed".
+    warn_3: > 
+        Doesn't look like you're narrowing the search down to speed. Try "'jaguar speed' -car".
+    text_4: 'jaguar speed' -car site:Nationalgeorgraphic.com
+    instructions_4: > 
+        Awesome, we're getting close! Now say we want to find our facts from the National Geographic site? Try adding "site:Nationalgeorgraphic.com" to the end of your search.
+    warn_4: > 
+        Doesn't look like you're searching specifically for Nat Geo. Try searching for "'jaguar speed' -car site:Nationalgeorgraphic.com"
+    text_5: 'jaguar speed' -car site:Nationalgeorgraphic.com filetype:pdf
+    instructions_5: > 
+        Perfect, now let's try search for a pdf with this information. Add "filetype:pdf" to the end of your search.
+    warn_5: > 
+        Doesn't look like you're searching for a pdf. Try searching for "'jaguar speed' -car site:Nationalgeorgraphic.com site:Nationalgeorgraphic.com"
+    text_6: "Jaguars are freakin' awesome"
+    instructions_6: > 
+        Sweet! Here's the last tip. To include a specific phrase in the search, add double quotes "Jaguars are freakin' awesome"
+    warn_6: > 
+        Try "Jaguars are freakin' awesome" to complete the course!
+    instructions_7: > 
+        Thanks for playing! Share on fb or twitter!
+    count: 7

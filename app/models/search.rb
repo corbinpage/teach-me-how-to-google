@@ -1,3 +1,6 @@
+#require 'open-url'
+#require 'nokogiri'
+
 class Search < ActiveRecord::Base
   belongs_to :session, dependent: :destroy
 
@@ -6,10 +9,10 @@ class Search < ActiveRecord::Base
 		key = 'AIzaSyAO6afXroTZPD6lp3cui_w8AOh1Nv0h6Wo'
 
 		uri = URI.parse('https://www.googleapis.com/customsearch/v1?q=' + self.search_text.gsub(/\s/,'+') + '&cx=' + callId + '&key='+key)
-		resp = Net::HTTP.get_response(uri) # get_response takes an URI object
+		json_response = Net::HTTP.get_response(uri) # get_response takes an URI object
 
-		self.status = resp.code
-		result = format_result(resp.body)
+		self.status = json_response.code
+		result = parse_search(json_response.body)
 
 		self.save
 
@@ -21,7 +24,7 @@ class Search < ActiveRecord::Base
 	end
 
 	private
-		def format_result(body)
+		def parse_search(body)
 			titles = Array.new
 			links = Array.new
 			displayLinks = Array.new
@@ -30,7 +33,6 @@ class Search < ActiveRecord::Base
 			data = JSON.parse(body)
 			items = data["items"]
 
-			puts items.inspect
 
 
 			if items
@@ -49,6 +51,21 @@ class Search < ActiveRecord::Base
 				item_display_links: displayLinks,
 				item_snippets: snippets,
 			}
+
+			result = gamify(result)
+
+			puts result.inspect
+
+			return result
+		end
+
+		def gamify(result)
+			compare = 'http://www.jaguarusa.com/'
+
+			match = result[:item_links].index{|x| x==compare}
+
+			result[:match] = match ? match : false
+
 			return result
 		end
 end
