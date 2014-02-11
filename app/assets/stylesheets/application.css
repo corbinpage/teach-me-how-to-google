@@ -21,6 +21,7 @@ input {
 }
 
 footer {
+   /*padding-top: 20px;*/
    position:fixed;
    left:0px;
    bottom:0px;
@@ -32,6 +33,7 @@ footer {
 
 /* Descendent Selector */
 footer a {
+  /*margin-top: 20px;*/
   color:#777;
   text-decoration:none;
 }
@@ -66,6 +68,55 @@ table td {
   border-color: #666666;
   background-color: #ffffff;
 }
+
+#g_link_title {
+  font-size: 16px;
+  color: #15C;
+  height: 1.2em;
+  text-decoration: underline;
+  overflow: hidden;
+  cursor: pointer;
+  direction: ltr;
+  unicode-bidi: embed;
+  zoom: 1;
+  visibility: visible !important;
+}
+
+#g_link_text {
+  word-break: break-all;
+  display: block;
+  overflow: hidden;
+  color: #093;
+  text-decoration: none;
+  padding-bottom: 2px;
+  position: static;
+  text-align: left;
+  direction: ltr;
+  unicode-bidi: embed;
+  zoom: 1;
+  visibility: visible !important;
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+}
+
+#g_summary {
+  color: #333;
+  position: static;
+  margin-top: 1px;
+  text-align: left;
+  direction: ltr;
+  unicode-bidi: embed;
+  display: block;
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  border-spacing: 0px;
+  border-collapse: separate;
+  border-spacing: 2px;
+  border-color: gray;
+  zoom: 1;
+  visibility: visible !important;
+}
+
 
 #show_container
 {

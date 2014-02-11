@@ -4,7 +4,12 @@
 class Search < ActiveRecord::Base
   belongs_to :session, dependent: :destroy
 
-	def perform_search
+  @session
+  @topic_hash
+
+
+	def perform_search(session, topic_hash)
+
 		callId = '004839866588995572534%3Ak4mrucdwo6c'
 		key = 'AIzaSyAO6afXroTZPD6lp3cui_w8AOh1Nv0h6Wo'
 
@@ -14,9 +19,42 @@ class Search < ActiveRecord::Base
 		self.status = json_response.code
 		result = parse_search(json_response.body)
 
-		self.save
-
 		return result
+	end
+
+	def prepare_search!(session, topic_hash)
+		@topic_hash = topic_hash
+		@session = session
+
+		self.search_num = self.search_num.to_i + 1
+		#self.status still equals "Pending" since the search hasn't been made yet
+	end	
+
+	def are_search_terms_correct?()
+		expected_search_text = @topic_hash["text_#{self.search_num.to_s}"]
+
+		case self.step.to_i
+			when 0
+				# Basic keyword matching
+				self.search_text.match(/#{@topic_hash["name"]}/)
+			when 1
+				# Use a -dash to exclude certain terms
+				self.search_text.match(/-\w/) && self.search_text.match(/#{@topic_hash["name"]}/)
+			when 2
+				#Exact Phrase - Use Quotes
+				self.search_text.match(/['"](\w+)['"]/) && self.search_text.match(/#{@topic_hash["name"]}/)
+			when 3
+				# Site specific
+				self.search_text.match(/site:/) && self.search_text.match(/#{@topic_hash["name"]}/)
+			when 4
+				# Filetype specific
+				self.search_text.match(/filetype:/) && self.search_text.match(/#{@topic_hash["name"]}/)
+			when 5
+				false
+			else
+				false
+		end
+
 	end
 
 	def format
@@ -33,8 +71,6 @@ class Search < ActiveRecord::Base
 			data = JSON.parse(body)
 			items = data["items"]
 
-
-
 			if items
 				items.length.times do |i|
 					titles << items[i]["title"]
@@ -45,6 +81,7 @@ class Search < ActiveRecord::Base
 			end
 
 			result = {
+				status: true,
 				searchInfo: data["searchInformation"],
 				item_titles: titles,
 				item_links: links,
@@ -54,7 +91,7 @@ class Search < ActiveRecord::Base
 
 			result = gamify(result)
 
-			puts result.inspect
+			#puts result.inspect
 
 			return result
 		end

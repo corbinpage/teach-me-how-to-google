@@ -1,7 +1,11 @@
 <div id="show_container">
 <div id="show_left">
 <div id="show_messages">
-<%= @step_hash[:text] %>
+<% if @result[:status]%>
+<%= @topic_hash["inst_#{@search[:step]}"] %>
+<% else %>
+<%= @topic_hash["warn_#{@search[:step]}"] %>
+<% end %>
 </div>
 </div>
 <div id="show_right">
@@ -12,7 +16,7 @@
 <br>
 <br>
 <%= form_tag({controller: "session", action:"add"}, method:"post") do %>
-    <%= text_field_tag('searchText', nil, placeholder: @search[:search_text]) %>
+    <%= text_field_tag('searchText', nil, placeholder: @topic_hash["text_#{@search[:step]}"], value: @topic_hash["text_#{@search[:step]}"]) %>
     <br>
 	<%= submit_tag("TMHT Google Search") %>
 	<%= submit_tag("I'm Feeling Lucky") %>
@@ -20,9 +24,11 @@
 <% end %>
 </center>
 </div>
+<!--<%= @result.inspect %>-->
 </div>
 <div id="show_table">
 <br>
+<% if @result.keys.include?(:item_titles) %>
 <% if @result[:item_titles].any? %>
 <table>
   <tr>
@@ -36,6 +42,7 @@
     <td><%= link_to @result[:item_links][i], @result[:item_display_links][i] %></td>
     <td><%= @result[:item_snippets][i] %></td>
   </tr>
+<% end %>
 <% end %>
 </table>
 <% end %>

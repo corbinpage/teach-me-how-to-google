@@ -2,26 +2,24 @@ class SessionController < ApplicationController
 	@session
 	@search
 	@result
-	@step_hash
-
+	@topic_hash
+	#@recent_search_text
 
 	def new
 		session_topic = "jaguar" # Hardcoded for now
-
-		yaml_text = YAML.load_file('/Users/corbinpage/zdev/teach-me-how-to-google/lib/assets/steps.yaml')
-		@topic_array = yaml_text["steps"][session_topic]
-		new_step = last_search["step"].to_i + 1
-
+		yaml_text = YAML.load_file('lib/assets/steps.yaml')
+		@topic_hash = yaml_text["steps"][session_topic]
+		#puts @topic_array.inspect
 	end
 
 	def create
-		@session = Session.new(:ip => 'default',:name => 'default',:start_time => Time.now) #possibly move to Session.initialize method
+		@session = Session.new(:custom1 => 'jaguar', :ip => 'default',:name => 'default',:start_time => Time.now) #possibly move to Session.initialize method
 		#Possibly move to Session.initialize method (I couldn't get it working)
 
 		@session.save
 		@session = Session.last
 
-		@search = Search.new(:step => 1, :search_num => 1, :search_text => params[:searchText], :session_id => @session[:id])
+		@search = Search.new(:status => "Pending", :step => 0, :search_num => 0, :search_text => params[:searchText], :session_id => @session[:id])
 		#Possibly move to Search.initialize method (I couldn't get it working)
 		@search.save
 
@@ -31,11 +29,12 @@ class SessionController < ApplicationController
 	def add
 		@session = Session.find(params[:id])
 		old_search = Search.where("session_id = ?", @session[:id]).last
-
-		@search = process_search(params[:searchText], old_search)
-	
-
-
+		@search = Search.new(:status => "Pending",
+												 :search_text => params[:searchText],
+												 :session_id => @session[:id],
+												 :step => old_search[:step],
+												 :search_num => old_search[:search_num]
+												)
 		@search.save
 
 		redirect_to @session
@@ -43,70 +42,25 @@ class SessionController < ApplicationController
 
 	def show
 		@session = Session.find(params[:id])
-		@search = Search.where("session_id = ?", params[:id]).last
-		@step_hash = get_step_text(@search)
-		@result = @search.perform_search()
-		puts @step_hash.inspect
-	end
+		@search = Search.where("session_id = ?", @session[:id]).last
+		@result = {}
 
-	def index
-	 	#@search = Search.new
-	end
+		yaml_text = YAML.load_file('lib/assets/steps.yaml')
+		@topic_hash = yaml_text["steps"][@session[:custom1]]
 
-	private
-		def get_step_text(last_search)
-			session_topic = "jaguar" # Hardcoed for now
-			yaml_text = YAML.load_file('/Users/corbinpage/zdev/teach-me-how-to-google/lib/assets/steps.yaml')
-			@topic_array = yaml_text["steps"][session_topic]
-			new_step = last_search["step"].to_i + 1
+		@search.prepare_search!(@session, @topic_hash)
 
-			step_text = @topic_array["text_#{new_step}"]
-			warn_text = @topic_array["warn_#{new_step}"]
-
-			@step_hash = {
-				:text => step_text,
-				:warn => warn_text
-			}
-
-			return @step_hash
+		if !@search.are_search_terms_correct?
+			@search[:status] = "Off Topic"
+			@result[:status] = "Off Topic"
+		else
+			@result = @search.perform_search(@session, @topic_hash)
+			@search[:step] = @search[:step].to_i + 1
+			@search[:status] = "Success!"
 		end
+		puts "|||"+ @search.inspect
+		@search.save
 
-
-		def process_search(search_text=nil, old_search)
-			search = Search.new(
-				{
-					:step => old_search[:step].to_i + 1,
-					:search_num => old_search[:search_num] + 1,
-					:search_text => search_text.strip,
-					:session_id => old_search[:session_id]
-				}
-			)
-			return search
-		end	
-
-		def check_search_terms(search)
-			expected_search_text = @step_hash["steps"][session_topic]["text_#{old_search[:search_num].to_s}"]
-			
-			case search[:search_num]
-			when 1
-				search[:search_num].match(expected_search_text)
-			when 2
-				search[:search_num].match(expected_search_text)
-			when 3
-				search[:search_num].match(expected_search_text)
-			when 4
-				search[:search_num].match(expected_search_text)
-			when 5
-				search[:search_num].match(expected_search_text)
-			when 6
-				search[:search_num].match(expected_search_text)
-			when 7
-				search[:search_num].match(expected_search_text)
-			else
-				#Possibly throw an error here
-				return false
-			end
-		end
-
+	end
 
 end
