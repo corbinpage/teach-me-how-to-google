@@ -1,50 +1,63 @@
 <div id="show_container">
-<div id="show_left">
-<div id="show_messages">
-<% if @result[:status]%>
-<%= @topic_hash["inst_#{@search[:step]}"] %>
-<% else %>
-<%= @topic_hash["warn_#{@search[:step]}"] %>
-<% end %>
-</div>
-</div>
-<div id="show_right">
-<div>
-<center>
-<br>
-<%= image_tag("icon.png",:alt => "Icon", height: '208', width: '400')%>
-<br>
-<br>
-<%= form_tag({controller: "session", action:"add"}, method:"post") do %>
-    <%= text_field_tag('searchText', nil, placeholder: @topic_hash["text_#{@search[:step]}"], value: @topic_hash["text_#{@search[:step]}"]) %>
-    <br>
-	<%= submit_tag("TMHT Google Search") %>
-	<%= submit_tag("I'm Feeling Lucky") %>
-	<%= hidden_field_tag :id, @session[:id]%>
-<% end %>
-</center>
-</div>
-<!--<%= @result.inspect %>-->
-</div>
-<div id="show_table">
-<br>
-<% if @result.keys.include?(:item_titles) %>
-<% if @result[:item_titles].any? %>
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Link</th>
-    <th>Snippet</th>
-  </tr>
-<% @result[:item_titles].length.times do |i| %>
-  <tr>
-    <td><%= @result[:item_titles][i] %></td>
-    <td><%= link_to @result[:item_links][i], @result[:item_display_links][i] %></td>
-    <td><%= @result[:item_snippets][i] %></td>
-  </tr>
-<% end %>
-<% end %>
-</table>
-<% end %>
-</div>
-</div>
+  <div id="show_left">
+    <center>
+      <% if @search[:step] ="1" %>
+        <div id="g_input1">
+      <% else %>
+        <div id="g_input">
+      <% end %>
+        <br>
+        <%= image_tag("icon.png",:alt => "Icon", height: '208', width: '400')%>
+        <br>
+        <br>
+        <%= form_tag({controller: "session", action:"add"}, method:"post") do %>
+        <%= text_field_tag('searchText', nil, placeholder: @topic_hash["text_#{@search[:step].to_i-1}"]) %>
+        <!--value: @topic_hash["text_#{@search[:step]}"]-->
+        <br>
+        <%= submit_tag("TMHT Google Search") %>
+        <%= submit_tag("I'm Feeling Lucky") %>
+        <%= hidden_field_tag :id, @session[:id]%>
+        <% end %>
+      </div>
+      <div id="show_messages">
+        <% if eval(@result[0][:status]) %>
+        <%= @topic_hash["inst_#{@search[:step]}"] %>
+        <% else %>
+        <%= @topic_hash["warn_#{@search[:step]}"] %>
+        <% end %>
+      </div>
+    </center>
+  </div>
+  <div id="show_right">
+    <div id="g_search">
+      <% if eval(@result[0][:status]) %>
+        <% @result.length.times do |i| %>
+        <% if @result[i][:custom1] == "green" %>
+          <div id = "g_result" class="green">
+        <% elsif @result[i][:custom1] == "red" %>
+          <div id = "g_result" class="red">
+            <% else %>
+            <div id = "g_result" class="neutral">
+              <%end%>  
+              <div id = "g_link_title">
+                <%= link_to @result[i][:item_titles], @result[i][:item_links] %>
+              </div>
+              <div id = "g_link_text">
+                <%= @result[i][:item_links] %>
+              </div>
+              <div id = "g_summary">
+                <%= @result[i][:item_snippets] %>
+              </div>
+            </div>
+        <% end %>
+      <% else %>
+        <br>
+        <br>
+        <br>
+        <center>
+          <%= image_tag("frowny.png",:alt => "Looks like your search is off...", height: '220', width: '229', :class => "frowny")%>
+        </center>
+      <% end %>
+        </div>
+      </div>
+    </div>

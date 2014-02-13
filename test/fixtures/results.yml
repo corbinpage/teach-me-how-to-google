@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  status: MyString
+  error: MyString
+  search_info_string: MyText
+  item_titles: MyString
+  item_links: MyString
+  item_display_links: MyString
+  item_snippets: MyText
+  custom1: MyString
+  custom2: MyString
+  custom3: MyText
+  search_id: 
+
+two:
+  status: MyString
+  error: MyString
+  search_info_string: MyText
+  item_titles: MyString
+  item_links: MyString
+  item_display_links: MyString
+  item_snippets: MyText
+  custom1: MyString
+  custom2: MyString
+  custom3: MyText
+  search_id: 
